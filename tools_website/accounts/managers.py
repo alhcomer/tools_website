@@ -23,3 +23,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_("To create a superuser is_superuser must == True."))
         return self.create_user(email, password, **extra_fields)
 
+    def send_conf_email(self, email):
+        #TODO: allow confirmation email sending upon account creation
+        pass
+
