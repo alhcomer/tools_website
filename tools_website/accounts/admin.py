@@ -22,7 +22,9 @@ class CustomUserAdmin(UserAdmin):
                 "email", "password1", "password2", "is_staff",
                 "is_active", "groups", "user_permissions"
             )
-        })
+        }),
     )
     search_fields = ("email",)
     ordering = ("email", )
+
+admin.site.register(CustomUser, CustomUserAdmin)
