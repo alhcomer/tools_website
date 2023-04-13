@@ -1,10 +1,11 @@
 from . import views
-from django.urls import path
+from django.urls import path, include
 
 
 app_name = 'tools'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('tools/', views.tools, name = 'tools')
+    path('tools/', views.tools, name = 'tools'),
+    path('tools/pdfconverter/', include("tools.pdfconverter.urls"), name="pdfconverter")
 ]

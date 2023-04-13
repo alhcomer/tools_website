@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "tools",
     "accounts",
     'django_bootstrap5',
+    "tools.pdfconverter"
 ]
 
 MIDDLEWARE = [
