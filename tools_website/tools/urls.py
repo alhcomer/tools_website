@@ -7,5 +7,5 @@ app_name = 'tools'
 urlpatterns = [
     path('', views.index, name='index'),
     path('tools/', views.tools, name = 'tools'),
-    path('tools/pdfconverter/', include("tools.pdfconverter.urls"), name="pdfconverter")
+    path('tools/file_converter/', include("tools.file_converter.urls"), name="file_converter")
 ]
