@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+
+{% block content %}
+<div class="row align-items-md-stretch pt-2">
+  <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary h-100 p-5 bg-body-tertiary border rounded-3" style="width: 380px;">
+    <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
+      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-5 fw-semibold">Previous File Conversions</span>
+    </a>
+    <div class="list-group list-group-flush border-bottom scrollarea">
+      {% if user_files %}
+      {% for files in user_files %}
+      <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+        <div class="d-flex w-100 align-items-center justify-content-between">
+          <strong class="mb-1">File converted from X to Y</strong>
+          <small>Wed</small>
+        </div>
+        <div class="col-10 mb-1 small">{{ files.input_file }}</div>
+        <div class="col-10 mb-1 small">{{ files.output_file }}</div>
+      </a>
+      {% endfor %}
+      {% else %}
+      <h3 class="m-3">No conversions have taken place.</h3>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+      <h2>Convert a Document</h2>
+      <p>Convert your documents for free to a number of formats, such as PDF, TXT and PPT.</p>
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-outline-secondary" type="button">Convert</button>
+      </form>
+
+    </div>
+  </div>
+    
+</div>
+
+    
+
+{% endblock content %}
