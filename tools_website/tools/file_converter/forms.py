@@ -14,6 +14,6 @@ conversion_choices = (
 )
 
 class FileUploadForm(forms.Form):
-    file_field = forms.FileField()
-    conversion_doctype = forms.ChoiceField(choices=conversion_choices)
+    file_field = forms.FileField(label="")
+    conversion_doctype = forms.ChoiceField(choices=conversion_choices, label="Convert to:")
     # TODO: handle file conversion asynchronously on the page

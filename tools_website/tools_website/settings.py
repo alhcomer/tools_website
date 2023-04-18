@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     "tools",
     "accounts",
     'django_bootstrap5',
-    "tools.file_converter"
+    "tools.file_converter",
+    "crispy_forms",
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -144,3 +146,8 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+# Crispy management
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
