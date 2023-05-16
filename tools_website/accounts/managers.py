@@ -26,4 +26,4 @@ class CustomUserManager(BaseUserManager):
     def send_conf_email(self, email):
         #TODO: allow confirmation email sending upon account creation
         pass
-
+    

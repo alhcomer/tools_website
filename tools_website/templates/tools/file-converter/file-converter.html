@@ -13,6 +13,8 @@
 {% block content %}
 <div class="container mt-3">
   <div class="row align-items-md-stretch pt-2">
+
+    {% comment %} Previously changed files section {% endcomment %}
     <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary h-100 p-5 bg-body-tertiary border rounded-3" style="width: 380px;">
       <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-body-emphasis text-decoration-none border-bottom">
         <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
@@ -35,14 +37,22 @@
         {% endif %}
       </div>
     </div>
+
+
+    {% comment %} Form section {% endcomment %}
     <div class="col-md-6">
       <div class="h-100 p-5 bg-body-tertiary border rounded-3">
         <h2>Convert a Document</h2>
         <p>Convert your documents for free to a number of formats, such as PDF, TXT and PPT.</p>
         
         <div class="form-group text-center">
-          <form method="post">
+          <form method="post" action="" enctype="multipart/form-data">
             {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors  %}
+                    <span>{{error}}</span>
+                {% endfor %}
+            {% endif %}
             {{ form|crispy }}
             {% bootstrap_button button_type="submit" content="Convert" %}
           </form>
