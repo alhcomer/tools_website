@@ -24,15 +24,11 @@ def file_converter(request):
             # TODO: grab file from request.FILES, convert file and save to db
             file_to_convert_base = form.save(commit=False)
             file_to_convert_base.user = request.user
-            file_to_convert_base.output_file = FileConverter(request.FILES['input_file'], request).output_file
+            # file_to_convert_base.output_file = FileConverter(request.FILES['input_file'], request).output_file
+            file_to_convert_base.output_file.name = 'user_{0}/{1}'.format(request.user.id, request.FILES['input_file'].name)
             file_to_convert_base.save()
             form.save_m2m()
-            context = {}
-            context["user_files"] = user_files
-            context["form"] = FileUploadForm()
-            return render(request, 'tools/file-converter/file-converter.html', context=context)
         #TODO: get object from Form, convert file here and save. Then render page again with updates user files
-    else: 
         user_files = FileConversion.objects.filter(user=request.user.id)
         context = {}
         context["user_files"] = user_files

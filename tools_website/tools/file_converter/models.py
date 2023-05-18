@@ -27,7 +27,7 @@ validator = FileValidator(max_size=100000000, min_size=100, content_types=allowe
 class FileConversion(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user")
     input_file = models.FileField(upload_to=user_directory_path, validators=[validator,], storage=CleanFileNameStorage())
-    output_file = models.FileField(upload_to=user_directory_path)
+    output_file = models.FileField(upload_to=lambda instance, filename: 'user_{0}/{1}'.format(instance.user.id, filename))
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 
