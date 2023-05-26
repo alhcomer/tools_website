@@ -18,9 +18,7 @@ conversion_choices = (
 
 
 class FileUploadForm(forms.ModelForm):
-    # file = forms.FileField(label="", validators=[validator])
     conversion_doctype = forms.ChoiceField(choices=conversion_choices, label="Convert to:")
-    # TODO: handle file conversion asynchronously on the page
 
     class Meta:
         model=FileConversion
