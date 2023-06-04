@@ -1,11 +1,9 @@
 from . import views
-from django.urls import path, include
+from django.urls import path
 
-
-app_name = 'file_converter'
+app_name = 'converter'
 
 urlpatterns = [
-    path('', views.about, name='about'),
-    path('file_converter', views.file_converter, name="file_converter"),
-    path('<int:files_id>/download', views.download, name="download"),
+    path('', views.file_converter, name='file_converter'),
+    path('<int:files_id>/download', views.download, name='download'),
 ]

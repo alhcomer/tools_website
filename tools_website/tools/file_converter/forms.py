@@ -4,16 +4,16 @@ import mimetypes
 from .models import FileConversion
 
 conversion_choices = (
-    ("1", "DOC"),
-    ("2", "DOCX"),
-    ("3", "HTML"),
-    ("4", "ODT"),
-    ("5", "PDF"),
-    ("6", "PPT"),
-    ("7", "PPTX"),
-    ("8", "RTF"),
-    ("9", "TXT"),
-    ("10", "XLSX"),
+    (".doc", "DOC"),
+    (".docx", "DOCX"),
+    (".html", "HTML"),
+    (".odt", "ODT"),
+    (".pdf", "PDF"),
+    (".ppt", "PPT"),
+    (".pptx", "PPTX"),
+    (".rtf", "RTF"),
+    (".txt", "TXT"),
+    (".xlsx", "XLSX"),
 )
 
 

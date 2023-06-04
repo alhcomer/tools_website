@@ -23,7 +23,7 @@
       <div class="list-group list-group-flush border-bottom scrollarea">
         {% if user_files %}
           {% for files in user_files %}
-            <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true" data-bs-toggle="modal" data-bs-target="#fileDownloadModal">
+            <a href="#" class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true" data-bs-toggle="modal" data-bs-target="#fileDownloadModal{{ files.id }}">
               <div class="d-flex w-100 align-items-center justify-content-between">
                 <strong class="mb-1">File converted from X to Y</strong>
                 <small>Wed</small>
@@ -31,34 +31,36 @@
               <div class="col-10 mb-1 small">{{ files.input_file }}</div>
               <div class="col-10 mb-1 small">{{ files.output_file }}</div>
             </a>
-
+    
             {% comment %} File download modal {% endcomment %}
-            <div class="modal fade" id="fileDownloadModal" tabindex="-1" aria-labelledby="fileDownloadLabel" aria-hidden="true">
+            <div class="modal fade" id="fileDownloadModal{{ files.id }}" tabindex="-1" aria-labelledby="fileDownloadLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header">
+                  <div class="modal-header bg-primary text-white">
                     <h1 class="modal-title fs-5" id="fileDownloadLabel">File Download</h1>
                   </div>
                   <div class="modal-body">
                     <div class="row">
-                      {% comment %} Need to get file picked above here {% endcomment %}
-                      <div class="col d-flex justify-content-center">
-                        {{ files.input_file }}
-                        <button class="btn btn-primary">Download</button>
+                      <div class="col-6 text-center">
+                        <a href="{{ files.input_file.url }}" download class="text-decoration-none">
+                          <div class="mb-2">{{ files.input_file }}</div>
+                          <button class="btn btn-primary download-button">Download</button>
+                        </a>
                       </div>
-                      <div class="col d-flex justify-content-center">
-                        {{ files.output_file }}
-                        <button class="btn btn-primary">Download</button>
+                      <div class="col-6 text-center">
+                        <a href="{{ files.output_file.url }}" download class="text-decoration-none">
+                          <div class="mb-2">{{ files.output_file }}</div>
+                          <button class="btn btn-primary download-button"> Download</button>
+                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           {% endfor %}
         {% else %}
-        <h3 class="m-3">No conversions have taken place.</h3>
+          <h3 class="m-3">No conversions have taken place.</h3>
         {% endif %}
       </div>
     </div>

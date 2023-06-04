@@ -7,9 +7,10 @@ import uuid
 
 
 class FileConverter:
-    def __init__(self, input_file, request):
+    def __init__(self, input_file, request, doctype):
         self.input_file = input_file
         self.user = request.user
+        self.file_extension = doctype
         self.output_file = self.convert_file()
 
     def get_full_file_path(self):
@@ -25,7 +26,7 @@ class FileConverter:
 
     def convert_file(self):
         input_filename, input_extension = os.path.splitext(self.input_file.name)
-        output_filename = f'{input_filename}.pdf'  # Output file will have the same name as the input file, but with .pdf extension
+        output_filename = f'{input_filename}' + self.file_extension 
 
         if FileConversion.objects.filter(user=self.user, input_file__contains=input_filename).exists():
             # If a FileConversion object with a similar input filename exists for the same user
@@ -39,5 +40,4 @@ class FileConverter:
 
         output_file_rel_path = os.path.relpath(output_path, settings.MEDIA_ROOT)
         return output_file_rel_path
-        #Documentation here : https://pypi.org/project/aspose-words/
 

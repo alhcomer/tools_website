@@ -6,8 +6,7 @@ def index(request):
 
 @login_required
 def tools(request):
-    tools = 'tools'
-    return render(request, 'tools/tools.html', {'tools': tools})
+    return render(request, 'tools/tools.html')
 
 #TODO:  create general about page for website
 #TODO: create market section (selling whatever) to demonstrate e-commerce platform capabilities

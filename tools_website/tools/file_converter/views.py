@@ -8,11 +8,7 @@ import uuid
 from django.contrib.auth.decorators import login_required
 import os
 
-def about(request):
-    return render(request, 'tools/file-converter/about.html')
-
 # TODO: must specify login_required redirect url
-# TODO: delete redundant code, e.g. potentially the code below
 # TODO: make input file and output file have same name excluding file extension
 @login_required
 def file_converter(request):
@@ -20,23 +16,14 @@ def file_converter(request):
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             conversion_choice = form.cleaned_data['conversion_doctype']
-            print(conversion_choice)
             input_file = request.FILES['input_file']
             file_to_convert_base = form.save(commit=False)
             file_to_convert_base.user = request.user
 
-            # if FileConversion.objects.filter(user=request.user, input_file=input_file).exists():
-            #     print("This is the if")
-            #     unique_filename = str(uuid.uuid4()) + '_' + input_file.name
-            #     file_converter = FileConverter(input_file, request)
-            #     file_to_convert_base.output_file.name = os.path.join('uploads', unique_filename)
-
-            # else:
-            #     print("This is the else")
-            #     print(input_file.name)
-            file_converter = FileConverter(input_file, request)
+            file_converter = FileConverter(input_file, request, conversion_choice)
             file_converter.input_file.name = input_file.name
             file_to_convert_base.output_file.name = file_converter.output_file
+
 
             file_to_convert_base.save()
             form.save_m2m()
