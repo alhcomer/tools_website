@@ -12,3 +12,5 @@ def register(request):
 
     form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+# TODO: implement 0auth into login form

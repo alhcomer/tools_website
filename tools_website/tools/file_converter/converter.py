@@ -27,6 +27,7 @@ class FileConverter:
     def convert_file(self):
         input_filename, input_extension = os.path.splitext(self.input_file.name)
         output_filename = f'{input_filename}' + self.file_extension 
+        print(output_filename)
 
         if FileConversion.objects.filter(user=self.user, input_file__contains=input_filename).exists():
             # If a FileConversion object with a similar input filename exists for the same user

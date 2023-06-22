@@ -15,7 +15,7 @@
         <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">This site aims to provide a number of tools in one location to simplify meeting your computing needs. Tools will continue to be added over time with the aim of this site becoming a one-stop shop for any and all computing utility requirements. This website has been built using Django.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Get Started</button>
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3">About Us</button>
         </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <img src="{% static 'tools/file_converter/convert-image.png' %}" alt="Placeholder" class="img-fluid" width="140" height="140">
         <h2 class="fw-normal">File Converter</h2>
         <p>A tool to convert a file to a number of different file types, including PDF, DOC and PPT.</p>
-        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+        <p><a class="btn btn-secondary" href="{% url 'tools:converter:file_converter' %}">View details »</a></p>
         </div>
         <div class="col-lg-4">
         <img src="{% static 'tools/colour_picker/colour_picker.png' %}" alt="Placeholder" class="img-fluid" width="140" height="140">        

@@ -9,11 +9,8 @@ conversion_choices = (
     (".html", "HTML"),
     (".odt", "ODT"),
     (".pdf", "PDF"),
-    (".ppt", "PPT"),
-    (".pptx", "PPTX"),
     (".rtf", "RTF"),
     (".txt", "TXT"),
-    (".xlsx", "XLSX"),
 )
 
 

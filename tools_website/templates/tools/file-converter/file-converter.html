@@ -12,6 +12,16 @@
 
 {% block content %}
 <div class="container mt-3">
+
+  {% comment %} About section describing the tool {% endcomment %}
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{% static 'tools/file_converter/convert-image.png' %}" alt="">
+    <h1 class="display-5 fw-bold">File Converter</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Quickly convert files between a number of file types and save them so that you can come back to them later.</p>
+    </div>
+  </div>
+
   <div class="row align-items-md-stretch pt-2">
 
     {% comment %} Previously changed files section {% endcomment %}

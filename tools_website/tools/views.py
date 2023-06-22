@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'tools/index.html')
 
+def about(request):
+    return render(request, 'tools/about-us.html')
+
 @login_required
 def tools(request):
     return render(request, 'tools/tools.html')
