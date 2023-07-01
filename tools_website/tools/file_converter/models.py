@@ -41,5 +41,13 @@ class FileConversion(models.Model):
     output_file = models.FileField(upload_to=get_unique_filename)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
+    def get_split_input(self):
+        # TODO: Fix str representation of file path shown to user on FileConversion objects
+        pass
+
+    def get_split_output(self):
+        pass
+
+
 #TODO: configure user specific upload areas
 # Maybe use https://stackoverflow.com/questions/34239877/django-save-user-uploads-in-seperate-folders
